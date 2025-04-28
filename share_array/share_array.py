@@ -43,7 +43,7 @@ def get_shared_array(name: str, shape=None):
     np_array = np.frombuffer(mp_array.get_obj(), dtype=np.dtype(mp_array.get_obj()._type_))
     if (shape is None) and (name + '_shape' in globals().keys()):
         shape = globals()[name + '_shape']
-        shape = np.frombuffer(shape.get_obj(), dtype=np.int)
+        shape = np.frombuffer(shape.get_obj(), dtype=np.int64)
     if shape is not None:
         np_array = np_array.reshape(shape)
     return np_array
